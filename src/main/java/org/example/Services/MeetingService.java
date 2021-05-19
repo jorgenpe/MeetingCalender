@@ -1,9 +1,7 @@
 package org.example.Services;
 
 import org.example.Sequencers.MeetingSequencer;
-import org.example.data.AppUserRepository;
 import org.example.data.MeetingRepository;
-import org.example.data.PersonRepository;
 import org.example.models.Meeting;
 import org.example.models.Person;
 
@@ -16,7 +14,7 @@ import java.util.List;
 
 public class MeetingService {
 
-    //Singelton begin
+    //Singleton begin
     private static final MeetingService INSTANCE;
 
     static{
@@ -26,7 +24,7 @@ public class MeetingService {
     private final PersonService personService;
     private final MeetingRepository meetingRepository;
 
-    // Method that you need to initiate a object of singelton
+    // Method that you need to initiate a object of singleton
     public static MeetingService getInstance(){
         return INSTANCE;
     }
@@ -36,7 +34,7 @@ public class MeetingService {
         this.personService =  PersonService.getInstance();
         this.meetingRepository = MeetingRepository.getInstance();
     }
-    // Singelton ends.
+    // Singleton ends.
 
     //Public  service methods that do operation with input, if they have any , and return different return types specific to the method.
     public Meeting addAttendant(int meetingId, int personId){
@@ -94,9 +92,9 @@ public class MeetingService {
             }
 
 
-            for(int j = 0; j < attendees.size(); j++) {
+            for (Integer attendee : attendees) {
 
-                if (personService.findAll().get(i).getId() == attendees.get(j)) {
+                if (personService.findAll().get(i).getId() == attendee) {
 
                     personAttendees.add(personService.findAll().get(i));
                 }
@@ -123,6 +121,7 @@ public class MeetingService {
     }
 
     public Meeting findById(int id) {
+
         return meetingRepository.findById(id);
     }
 
@@ -153,14 +152,14 @@ public class MeetingService {
 
         for (int i = 0; i < meetingTemp.getAttendants().size(); i++) {
 
-
             if(meetingTemp.getAttendants().get(i).equals(personTemp)){
 
                 meetingTemp.getAttendants().remove(i);
+                return meetingTemp;
             }
         }
 
-       return meetingTemp ;
+        return null;
 
     }
 

@@ -8,7 +8,7 @@ import java.util.List;
 
 public class AppUserRepository {
 
-    //Singelton starts.
+    //Singleton starts.
     private static final AppUserRepository INSTANCE;
 
     static{
@@ -26,7 +26,7 @@ public class AppUserRepository {
     private AppUserRepository(){
         this.appUserStorage = new ArrayList<>();
     }
-    // Singelton ends
+    // Singleton ends
 
     // Method where you add person objects to AppUserRepository
     public AppUser persist(AppUser appUser){

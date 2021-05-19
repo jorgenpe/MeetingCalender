@@ -4,7 +4,7 @@ import org.example.Sequencers.AppUserSequencer;
 import org.example.data.AppUserRepository;
 import org.example.models.AppUser;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 public class AppUserService {
@@ -17,7 +17,7 @@ public class AppUserService {
 
     private final AppUserRepository appUserRepository;
 
-    // Method that you need to initiate a object of singelton
+    // Method that you need to initiate a object of singleton
     public static AppUserService getInstance(){
         return INSTANCE;
     }
@@ -75,21 +75,23 @@ public class AppUserService {
     public AppUser update(int id, String userName, String password){
 
         AppUser appUserTemp = findById(id);
-
-        if(appUserTemp != null){
-
-            if(appUserTemp.getUsername().equals(userName)){
-                return null;
-            }
+        if(appUserTemp.getUsername().equals(userName)){
+            return null;
+        }
 
             appUserTemp = new AppUser(id, userName, password);
 
             boolean boolTemp = remove(id);
-            appUserRepository.persist(appUserTemp);
 
-            return appUserTemp;
-        }
-       return null;
+            if(boolTemp){
+
+                appUserRepository.persist(appUserTemp);
+                return appUserTemp;
+            }
+
+
+            return null;
+
     }
 
     // Clear method that clears the AppUserRepository

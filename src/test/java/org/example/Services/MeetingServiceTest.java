@@ -177,6 +177,26 @@ class MeetingServiceTest {
     }
 
     @Test
+    void findById(){
+
+        Meeting testMeeting = testMeetingService.findById(30001);
+
+        Meeting expected = testMeetingService.findAll().get(0);
+
+        assertEquals(expected, testMeeting);
+
+    }
+
+    @Test
+    void findByMeetingDate(){
+
+        List<Meeting> testListMeeting = testMeetingService.findMeetingByDate(LocalDate.of(2021, 5,5));
+        int expected = 2;
+
+        assertEquals(expected, testListMeeting.size());
+    }
+
+    @Test
     void removeAttendant() {
         List<Integer> testPersonId = new ArrayList<>();
         testPersonId.add(20001);

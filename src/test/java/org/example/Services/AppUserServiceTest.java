@@ -68,6 +68,16 @@ class AppUserServiceTest {
     }
 
     @Test
+    void findById(){
+
+        AppUser testAppUser = testAppUserService.findById(10001);
+        AppUser expected = testAppUserService.findAll().get(0);
+
+        assertEquals(expected,testAppUser);
+
+    }
+
+    @Test
     void testUpdate() {
 
         AppUser testAppUser = testAppUserService.update(10001, "Adam", "98gf");

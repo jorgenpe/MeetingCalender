@@ -1,7 +1,6 @@
 package org.example.data;
 
-import org.example.Sequencers.PersonSequencer;
-import org.example.models.AppUser;
+
 import org.example.models.Person;
 
 import java.util.ArrayList;
@@ -9,7 +8,7 @@ import java.util.List;
 
 public class PersonRepository {
 
-    // Singelton start
+    // Singleton start
     private static final PersonRepository INSTANCE;
 
     static{
@@ -18,7 +17,7 @@ public class PersonRepository {
 
     private final List<Person> personStorage;
 
-    // Method that you need to initiate a object of singelton.
+    // Method that you need to initiate a object of singleton.
     public static PersonRepository getInstance(){
         return INSTANCE;
     }
@@ -27,7 +26,7 @@ public class PersonRepository {
     private PersonRepository(){
         this.personStorage = new ArrayList<>();
     }
-    //Singelton ends
+    //Singleton ends
 
     // Method where you add person objects to PersonRepository
     public Person persist(Person person){

@@ -12,7 +12,7 @@ public class PersonService {
 
 
 
-        //Singelton starts.
+        //Singleton starts.
         private static final PersonService INSTANCE;
 
         static{
@@ -22,7 +22,7 @@ public class PersonService {
         private final AppUserService appUserService;;
         private final PersonRepository personRepository;
 
-        // Method that you need to initiate a object of singelton
+        // Method that you need to initiate a object of singleton
         public static PersonService getInstance(){
         return INSTANCE;
     }
@@ -33,7 +33,7 @@ public class PersonService {
             this.appUserService = AppUserService.getInstance();
             this.personRepository = PersonRepository.getInstance();
         }
-        // Singelton ends.
+        // Singleton ends.
 
 
         //Public  service methods that do operation with input, if they have any , and return different return types specific to the method.

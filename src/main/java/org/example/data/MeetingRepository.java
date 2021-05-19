@@ -14,7 +14,7 @@ import java.util.List;
 
 public class MeetingRepository {
 
-    //Singelton start
+    //Singleton start
     private static final MeetingRepository INSTANCE;
 
     static{
@@ -23,7 +23,7 @@ public class MeetingRepository {
 
     private final List<Meeting> meetingStorage;
 
-    // Method that you need to initiate a object of singelton
+    // Method that you need to initiate a object of singleton
     public static MeetingRepository getInstance(){
         return INSTANCE;
     }
@@ -33,7 +33,7 @@ public class MeetingRepository {
 
         this.meetingStorage = new ArrayList<>();
     }
-    // Singelton ends
+    // Singleton ends
 
     // Method where you add person objects to MeetingRepository
     public Meeting persist(Meeting meeting){
